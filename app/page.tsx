@@ -2,11 +2,16 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
-import { Component as Hero } from "@/components/ui/horizon-hero-section";
+import { HorizonHeroSection as Hero } from "@/components/ui/horizon-hero-section";
 import { AboutSection } from "@/components/sections/about";
 import { ServicesSection } from "@/components/sections/services";
 import { CapabilitiesSection } from "@/components/sections/capabilities";
 import { ContactSection } from "@/components/sections/contact";
+
+import { ManifestoSection } from "@/components/sections/manifesto";
+import { ProcessSection } from "@/components/sections/process";
+import { AtmosphereSection } from "@/components/sections/atmosphere";
+import { OutroSection } from "@/components/sections/outro";
 
 export default function Home() {
   useEffect(() => {
@@ -30,12 +35,16 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="w-full min-h-screen bg-black text-white selection:bg-white selection:text-black">
+    <main className="w-full min-h-screen bg-background text-foreground selection:bg-primary selection:text-white">
       <Hero />
+      <ManifestoSection />
       <AboutSection />
       <ServicesSection />
+      <ProcessSection />
+      <AtmosphereSection />
       <CapabilitiesSection />
       <ContactSection />
+      <OutroSection />
     </main>
   );
 }

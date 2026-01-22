@@ -33,14 +33,23 @@ export function AboutSection() {
     }, []);
 
     return (
-        <section className="relative z-10 w-full min-h-[60vh] flex items-center justify-center py-24 bg-black">
-            <div className="container px-4 md:px-6">
-                <div ref={textRef} className="max-w-4xl mx-auto text-4xl font-light leading-10 text-white md:text-6xl md:leading-tight">
+        <section className="relative z-10 w-full min-h-[60vh] flex items-center justify-center py-24 bg-background text-foreground">
+            <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-12 items-center">
+                <div ref={textRef} className="text-4xl font-light leading-10 text-foreground md:text-6xl md:leading-tight">
                     <p className="flex flex-wrap gap-x-3 gap-y-1">
                         {`We are Lavine. A digital-first design studio crafting brands that demand attention. We blend cinematic motion with Swiss precision to create experiences that feel alive.`.split(" ").map((word, i) => (
                             <span key={i} className="word inline-block">{word}</span>
                         ))}
                     </p>
+                </div>
+                {/* Image Integration */}
+                <div className="relative h-[500px] w-full overflow-hidden rounded-lg shadow-2xl">
+                    <img
+                        src="/images/s1.jpg"
+                        alt="Studio Abstract"
+                        className="object-cover w-full h-full hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-primary/10 mix-blend-multiply pointer-events-none"></div>
                 </div>
             </div>
         </section>
