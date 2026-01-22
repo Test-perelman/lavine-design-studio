@@ -35,10 +35,10 @@ export function ManifestoSection() {
                 y: 0,
                 duration: 1.5,
                 ease: "power4.out",
+                delay: i * 0.1,
                 scrollTrigger: {
                     trigger: el,
                     start: "top 70%",
-                    delay: i * 0.1,
                 }
             });
         });
