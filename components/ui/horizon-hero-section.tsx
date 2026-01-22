@@ -49,16 +49,15 @@ export const HorizonHeroSection = () => {
             const { current: refs } = threeRefs;
             if (!canvasRef.current) return;
 
-            // Theme Colors (Derived from Lavine Design Studio "Stone & Clay")
+            // Theme Colors (Updated: Lavine Brand Blue & Yellow/Gold)
             const theme = {
-                fog: 0x1a1a1a, // Dark Charcoal/Black for depth
-                nebula1: new THREE.Color("#8C8681"), // Primary Warm Grey
-                nebula2: new THREE.Color("#B3ADA7"), // Muted Warm
-                mountain1: 0x1a1a1a, // Darkest
-                mountain2: 0x262626,
-                mountain3: 0x333333,
-                mountain4: 0x404040,
-                star: new THREE.Color("#F4F2ED"), // Off-white stars
+                fog: 0x0a1014, // Dark Blue-Grey/Black for depth
+                nebula1: new THREE.Color("#005c99"), // Brand Blue (Deep/Rich)
+                nebula2: new THREE.Color("#e6b800"), // Brand Yellow/Gold (Warm)
+                mountain1: 0x0a1014, // Darkest
+                mountain2: 0x111a21,
+                mountain3: 0x18242e,
+                mountain4: 0x20303d, // Hint of blue in the mountains
             };
 
             // Scene setup
@@ -135,15 +134,15 @@ export const HorizonHeroSection = () => {
                     positions[j * 3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
                     positions[j * 3 + 2] = radius * Math.cos(phi);
 
-                    // Color variation - Warm/Neutral
+                    // Color variation - Blue/Gold/White
                     const color = new THREE.Color();
                     const colorChoice = Math.random();
-                    if (colorChoice < 0.7) {
-                        color.setHSL(0.1, 0.2, 0.8 + Math.random() * 0.2); // Warm White
-                    } else if (colorChoice < 0.9) {
-                        color.copy(theme.nebula2); // Subtle clay tint
+                    if (colorChoice < 0.6) {
+                        color.setHSL(0.6, 0.4, 0.9); // Pale Blue-ish White
+                    } else if (colorChoice < 0.8) {
+                        color.setHSL(0.12, 0.8, 0.7); // Gold/Yellow tint
                     } else {
-                        color.copy(theme.nebula1); // Primary hint
+                        color.setHSL(0.6, 0.8, 0.7); // Blue tint
                     }
 
                     colors[j * 3] = color.r;
@@ -339,13 +338,16 @@ export const HorizonHeroSection = () => {
           
           void main() {
             float intensity = pow(0.7 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 2.0);
-            // Atmosphere color - warm blue/grey
-            vec3 atmosphere = vec3(0.5, 0.5, 0.6) * intensity;
+            // Atmosphere color - Deep Blue with a hint of Gold warmth
+            vec3 atmosphere = vec3(0.0, 0.3, 0.6) * intensity; // Brand Blue base
             
             float pulse = sin(time * 2.0) * 0.1 + 0.9;
             atmosphere *= pulse;
             
-            gl_FragColor = vec4(atmosphere, intensity * 0.15);
+            // Add golden rim light
+            atmosphere += vec3(0.2, 0.15, 0.0) * intensity * 0.5;
+            
+            gl_FragColor = vec4(atmosphere, intensity * 0.3);
           }
         `,
                 side: THREE.BackSide,

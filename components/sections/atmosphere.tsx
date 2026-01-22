@@ -48,10 +48,14 @@ export function AtmosphereSection() {
                 {[1, 2, 3, 4].map((n) => (
                     <div key={n} className="relative h-[40vh] md:h-[60vh] overflow-hidden rounded-sm bg-neutral/10">
                         {/* Placeholder for atmosphere images - using style/color blocks if no images available, but we have s1/s2/s3 */}
-                        <div className={`atmos-img w-full h-[120%] bg-cover bg-center opacity-60 grayscale hover:grayscale-0 transition-all duration-700`}
+                        <div className={`atmos-img w-full h-[120%] bg-cover bg-center opacity-80 grayscale hover:grayscale-0 transition-opacity duration-700`}
                             style={{
-                                backgroundColor: n % 2 === 0 ? '#5A4035' : '#8C8681',
-                                backgroundImage: `url(/images/s${(n % 3) + 1}.jpg)`
+                                backgroundColor: n % 2 === 0 ? '#1A1A1A' : '#262626',
+                                backgroundImage: `url(${n === 1 ? '/images/s1.jpg' :
+                                        n === 2 ? '/images/interior-blue-brown.png' :
+                                            n === 3 ? '/images/interior-yellow.png' :
+                                                '/images/s2.jpg'
+                                    })`
                             }}
                         />
                     </div>
